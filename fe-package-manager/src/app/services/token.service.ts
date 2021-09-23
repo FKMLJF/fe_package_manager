@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserDto} from "../dto-models/user-dto.model";
 import {environment} from "../../environments/environment";
+import {LoginDto} from "../dto-models/login-dto.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,39 @@ export class TokenService {
   }
 
   public logOut(): void {
-    window.sessionStorage.clear();
+    window.sessionStorage.removeItem(environment.session_token_key);
+    window.sessionStorage.removeItem(environment.session_user_key);
   }
 
   public getToken(): string | boolean {
     return window.sessionStorage.getItem(environment.session_token_key) ?? false;
   }
 
+  public getRemember(): LoginDto | null {
+    const user = window.sessionStorage.getItem(environment.remember_key);
+
+    if (user) {
+      return new LoginDto(JSON.parse(user));
+    } else {
+      return null;
+    }
+  }
+
+  public setRemember(authenticatedUser : LoginDto): void {
+    window.sessionStorage.setItem(environment.remember_key, JSON.stringify(authenticatedUser));
+  }
+
   public setToken(token: string): void {
     window.sessionStorage.setItem(environment.session_token_key, token);
   }
 
-  public getUser(): UserDto | boolean {
+  public getUser(): UserDto | null {
     const user = window.sessionStorage.getItem(environment.session_user_key);
 
     if (user) {
       return new UserDto(JSON.parse(user));
     } else {
-      return false;
+      return null;
     }
   }
 
