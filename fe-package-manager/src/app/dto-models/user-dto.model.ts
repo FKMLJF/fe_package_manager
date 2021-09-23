@@ -1,10 +1,10 @@
 
 export class UserDto {
   constructor(user: any) {
-      this.userId = user?.userId;
       this.userName = user?.userName;
+      this.rememberMe = user?.rememberMe;
   }
 
-  private userId?: number;
-  private userName?: string;
+  public userName?: string;
+  public rememberMe?: boolean;
 }
