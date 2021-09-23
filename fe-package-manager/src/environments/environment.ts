@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_endpoint: "http://localhost:30392/",
+  session_user_key: "authenticated_user",
+  session_token_key: "authentication_token",
+  remember_key: "remember_me",
+  header_token_key: "Authorization"
 };
 
 /*
