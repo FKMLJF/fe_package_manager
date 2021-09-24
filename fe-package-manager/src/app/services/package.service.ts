@@ -15,7 +15,7 @@ export class PackageService {
   }
 
   findOrdersByPackageId(PackageId: string): Observable<any> {
-    return this.http.get(environment.api_endpoint + `api/find/Package/${PackageId}`);
+    return this.http.get(environment.api_endpoint + `api/Package/find/${PackageId}`);
   }
 
   GetOrderById(orderId: number): Observable<any> {

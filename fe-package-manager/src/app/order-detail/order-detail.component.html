@@ -1,0 +1,58 @@
+<button class="ml-3 btn btn-outline-light text-black-50 mb-2" (click)="handleBack()"><i class="fa fa-chevron-circle-left text-info"></i> Vissza</button>
+<div class="px-3">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <h5 class="pb-3">Csomag információk</h5>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Csomagszám</label>
+            <p class="form-control-plaintext">{{orderDetail.packageId}}</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Rendelésszám</label>
+            <p class="form-control-plaintext">{{orderDetail.orderId}}</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Státuszkód</label>
+            <p class="form-control-plaintext">{{orderDetail.statusShortHand}}</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Státusz</label>
+            <p class="form-control-plaintext">{{orderDetail.status}}</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Szállítás információ</label>
+            <p class="form-control-plaintext">{{orderDetail.description}}</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <h5 class="border-top pt-3">Tételek</h5>
+          <table class="table table-borderless">
+            <tr>
+              <th>Név</th>
+              <th>Ár</th>
+            </tr>
+            <tr *ngFor="let product of orderDetail.products">
+                <td>{{product.productName}}</td>
+                <td>{{product.productPrice}}</td>
+            </tr>
+          </table>
+          <h5 class="text-info py-2 d-flex border-top pt-3"><span class="flex-grow-1">Mindösszesen:</span> <strong>{{sumPrice}}</strong>&nbsp;HUF</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

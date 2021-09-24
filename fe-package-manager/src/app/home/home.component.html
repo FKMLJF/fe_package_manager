@@ -1,9 +1,19 @@
 <i *ngIf="!loaded" class="fa fa-spinner fa-pulse fa-4x"></i>
 <div class="container">
-  <div *ngIf="loaded" class="row">
+  <div class="d-flex py-1">
+    <div class="form-group mb-2 flex-grow-1 mr-2">
+      <label for="package-id" class="sr-only">Csomagszám</label>
+      <input type="search" id="package-id" (keydown)="handleOnEnter($event)" class="form-control"
+             [(ngModel)]="packageId" placeholder="csomagszám">
+    </div>
+    <button type="button" (click)="FindOrdersByPackageId()" [disabled]="packageId==''"
+            class="btn btn-outline-secondary mb-2">
+      Keresés <i class="fa fa-search"></i>
+    </button>
+  </div>
+  <div *ngIf="loaded" class="row mt-0">
     <div class="col-12" *ngFor="let order of Orders">
       <app-order [order]="order"></app-order>
     </div>
-
   </div>
 </div>

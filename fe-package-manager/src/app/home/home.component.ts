@@ -10,6 +10,7 @@ import {OrderDto} from "../dto-models/order-dto.model";
 export class HomeComponent implements OnInit {
   Orders: OrderDto[] = [];
   loaded = false;
+  packageId: string = "";
 
   constructor(private packageService: PackageService) {
   }
@@ -22,13 +23,31 @@ export class HomeComponent implements OnInit {
     this.loaded = false;
     this.packageService.getOrders().subscribe((response : OrderDto[])  => {
           this.Orders = response;
-        this.loaded = true;
       },
       error => {
 
       }).add(() => {
-       // this.loaded = true;
+        this.loaded = true;
     })
   }
 
+  FindOrdersByPackageId() {
+    if(this.packageId != "") {
+      this.loaded = false;
+      this.packageService.findOrdersByPackageId(this.packageId).subscribe((response: OrderDto[]) => {
+          this.Orders = response;
+        },
+        error => {
+
+        }).add(() => {
+        this.loaded = true;
+      })
+    }
+  }
+
+  handleOnEnter(event: any) {
+    if(event.keyCode == 13){
+      this.FindOrdersByPackageId();
+    }
+  }
 }
