@@ -1,4 +1,4 @@
-<div id="app">
+
   <nav class="navbar navbar-expand-lg bg-light navbar-light mb-3">
     <a class="navbar-brand" *ngIf="isLoggedIn" [routerLink]="'/home'"><strong>Package Manager</strong></a>
     <a class="navbar-brand" *ngIf="!isLoggedIn" [routerLink]="'/login'"><strong>Package Manager</strong></a>
@@ -23,9 +23,5 @@
 
     </div>
   </nav>
-
-  <div class="container">
-    <p class="primary-color" *ngIf="isLoggedIn">Hello, <strong>{{username}}</strong>!</p>
-    <router-outlet></router-outlet>
-  </div>
-</div>
+  <p class="primary-color px-3" *ngIf="isLoggedIn">Hello, <strong>{{username}}</strong>!</p>
+  <router-outlet></router-outlet>

@@ -1,1 +1,9 @@
-<p>home works!</p>
+<i *ngIf="!loaded" class="fa fa-spinner fa-pulse fa-4x"></i>
+<div class="container">
+  <div *ngIf="loaded" class="row">
+    <div class="col-12" *ngFor="let order of Orders">
+      <app-order [order]="order"></app-order>
+    </div>
+
+  </div>
+</div>

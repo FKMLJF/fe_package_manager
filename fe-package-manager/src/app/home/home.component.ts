@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PackageService} from "../services/package.service";
+import {OrderDto} from "../dto-models/order-dto.model";
 
 @Component({
   selector: 'app-home',
@@ -6,14 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  Orders: OrderDto[] = [];
+  loaded = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private packageService: PackageService) {
   }
 
-  loadInitialData(): void{
-    
+  ngOnInit(): void {
+    this.loadInitialData();
+  }
+
+  loadInitialData(): void {
+    this.loaded = false;
+    this.packageService.getOrders().subscribe((response : OrderDto[])  => {
+          this.Orders = response;
+        this.loaded = true;
+      },
+      error => {
+
+      }).add(() => {
+       // this.loaded = true;
+    })
   }
 
 }

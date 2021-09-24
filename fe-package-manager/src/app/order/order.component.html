@@ -1,0 +1,53 @@
+<div class="card my-4" >
+  <div class="card-header">Csomagkövetés - {{order.packageId}}</div>
+  <div class="card-body p-2">
+    <table class="table table-borderless">
+      <tr>
+        <td>
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Csomagszám</label>
+            <p class="form-control-plaintext m-0 p-0">{{order.packageId}}</p>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Rendeléskód</label>
+            <p class="form-control-plaintext m-0 p-0">{{order.orderId}}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Státuszkód</label>
+            <p class="form-control-plaintext m-0 p-0">{{order.statusShortHand}}</p>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Státusz</label>
+            <p class="form-control-plaintext m-0 p-0">{{order.status}}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Tételek száma</label>
+            <p class="form-control-plaintext m-0 p-0">{{order.itemCount}} db</p>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="form-group">
+            <label class="m-0 p-0 text-muted">Szállítás információ</label>
+            <p class="form-control-plaintext m-0 p-0">{{order.description}}</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
