@@ -1,15 +1,41 @@
 <div class="container p-0">
   <div class="row justify-content-md-center">
     <div class="col-md-6">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-        <label for="username">Username </label>
-        <input id="username" type="text" formControlName="userName">
-
-        <label for="password">Password: </label>
-        <input id="password" type="password" formControlName="password">
-        <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+      <p class="text-danger alert alert-danger"  *ngIf="loginForm.get('errorMsq')?.value">{{loginForm.get('errorMsq')?.value}}!</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card p-4">
+        <div class="card-header mb-4">
+            <h5>Bejelentkezés</h5>
+        </div>
+        <div class="form-group">
+          <label for="username">Felhasználónév</label>
+          <input id="username" class="form-control" placeholder="Felhasználónév" type="text" formControlName="userName">
+        </div>
+        <div class="form-group">
+          <label for="password">Jelszó</label>
+          <input id="password" type="password" class="form-control" formControlName="password" placeholder="Jelszó">
+        </div>
+        <div class="d-flex flex-row-reverse">
+          <button type="submit" class="btn btn-outline-primary" [disabled]="!loginForm.valid">Belépek!</button>
+        </div>
       </form>
+
+      <div class="card p-4 mt-4">
+         <p>Kipróbálnád? Demó fiókok:</p>
+          <table class="table table-borderless">
+            <tr>
+              <th>Felhasználónév</th>
+              <th>Jelszó</th>
+            </tr>
+            <tr>
+              <td>thomas_shelby</td>
+              <td>thomas_shelby</td>
+            </tr>
+            <tr>
+              <td>john_shelby</td>
+              <td>john_shelby</td>
+            </tr>
+          </table>
+      </div>
     </div>
   </div>
 </div>
