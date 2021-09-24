@@ -1,4 +1,4 @@
-<div class="card my-4" >
+<div class="card mb-4" >
   <div class="card-header">Csomagkövetés - {{order.packageId}}</div>
   <div class="card-body p-2">
     <table class="table table-borderless">
@@ -48,6 +48,9 @@
         </td>
       </tr>
     </table>
+  </div>
+  <div class="card-footer d-flex flex-row-reverse">
+      <button class="btn btn-info" (click)="handleClickDetail()">Részletek</button>
   </div>
 </div>
 
