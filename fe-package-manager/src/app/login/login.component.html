@@ -14,6 +14,15 @@
           <label for="password">Jelszó</label>
           <input id="password" type="password" class="form-control" formControlName="password" placeholder="Jelszó">
         </div>
+        <div class="form-check-inline">
+          <label for="remember-me" class="pr-2 pt-2">Jegyezz meg
+          </label><input
+          type="checkbox"
+          id="remember-me"
+          class="form-check"
+          formControlName="rememberMe"
+          (click)="onClickRememberMe()"/>
+        </div>
         <div class="d-flex flex-row-reverse">
           <button type="submit" class="btn btn-outline-primary" [disabled]="!loginForm.valid">Belépek!</button>
         </div>

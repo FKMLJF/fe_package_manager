@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserDto} from "../dto-models/user-dto.model";
 import {Router} from "@angular/router";
 import {AppComponent} from "../app.component";
+import {LoginDto} from "../dto-models/login-dto.model";
 
 @Component({
   selector: 'app-login',
@@ -31,13 +32,13 @@ export class LoginComponent implements OnInit {
     const userRemember = this.tokenService.getRemember();
 
     this.loginForm = new FormGroup({
-      userName: new FormControl("", [
+      userName: new FormControl(userRemember?.userName, [
         Validators.required
       ]),
-      password: new FormControl("", [
+      password: new FormControl(userRemember?.password, [
         Validators.required
       ]),
-      rememberMe: new FormControl(""),
+      rememberMe: new FormControl(userRemember?.password),
       errorMsq: new FormControl(""),
     });
   }
@@ -63,5 +64,14 @@ export class LoginComponent implements OnInit {
         this.loaded = true;
       });
   }
+  onClickRememberMe() : void {
+    if(!this.loginForm.get("rememberMe")?.value){
+        let user = new LoginDto(this.loginForm.value)
+        this.tokenService.setRemember(user);
+    }else{
+        this.tokenService.setRemember(undefined,true);
+    }
+  }
+
 
 }

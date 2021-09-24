@@ -30,8 +30,12 @@ export class TokenService {
     }
   }
 
-  public setRemember(authenticatedUser : LoginDto): void {
-    window.sessionStorage.setItem(environment.remember_key, JSON.stringify(authenticatedUser));
+  public setRemember(authenticatedUser : LoginDto = new LoginDto(null), reset: boolean = false): void {
+    if(reset){
+      window.sessionStorage.removeItem(environment.remember_key);
+    }else{
+      window.sessionStorage.setItem(environment.remember_key, JSON.stringify(authenticatedUser));
+    }
   }
 
   public setToken(token: string): void {
