@@ -13,7 +13,7 @@ import {LoginDto} from "../dto-models/login-dto.model";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private loaded?: boolean
+  loading: boolean = false;
   loginForm = new FormGroup({
     usernName: new FormControl("", [
       Validators.required
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.loading = true;
     this.authService.login(this.loginForm?.value)
       .subscribe(response => {
           this.tokenService.setToken(response.token);
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
           this.loginForm?.get("errorMsq")?.setValue(error.error?.message)
         })
       .add(() => {
-        this.loaded = true;
+        this.loading = false;
       });
   }
   onClickRememberMe() : void {
